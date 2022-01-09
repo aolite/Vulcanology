@@ -35,6 +35,10 @@ class VulcanologiaLoader:
         sismicDevice.location = point_sismic_device
         volcan.hasDevice.append(sismicDevice)
 
+        affectionRisk = IRIS["https://www.w3id.org/aservo#PopulationRisks"]('LaPalmaRisk', namespace=self.onto)
+        affectionRisk.is_a.append(IRIS["https://saref.etsi.org/core/Device"])
+        affectionRisk.location = point_sismic_device
+        volcan.hasDevice.append(affectionRisk)
 
     def airQualityLoader (self, csvName):
         airQualityCSV = pd.read_csv(csvName)
@@ -49,15 +53,121 @@ class VulcanologiaLoader:
         for i, row in enumerate(airQualityCSV.itertuples()):
             print (f' Loading the row number {i}/{len(airQualityCSV)}')
             unamed_measurement = IRIS["https://saref.etsi.org/core/Measurement"]()
-            unamed_measurement.hasValue = row.NO2
+            unamed_measurement.hasValue = row.O3
             unamed_measurement.hasTimestamp = row.time
             unamed_measurement.isMeasuredIn = IRIS["https://saref.etsi.org/core/UnitOfMeasure"]('ug/m3', namespace=self.onto)
-            unamed_measurement.relatesToProperty = self.onto.NO2
-            self.onto.VolcanLaPalma.hasMeasurement.append(unamed_measurement)
+            unamed_measurement.relatesToProperty = self.onto.O3
+
+            self.onto.AirQuailitySensorPalma.makesMeasurement.append(unamed_measurement)
 
 
     def SismicMovements (self, csvName):
         seismicMovements = pd.read_csv(csvName)
-        self.onto.VolcanLaPalma.hasProperty.append(self.onto.NO2Level('NO2', namespace=self.onto))
+
+        self.onto.SismicSensorPalma.hasProperty.append(self.onto.SeismicActivity('Magnitude', namespace= self.onto))
+        self.onto.SismicSensorPalma.hasProperty.append(self.onto.SeismicActivity('IntensMax', namespace=self.onto))
+
+        for i, row in enumerate(seismicMovements.itertuples()):
+            unamed_measurement = IRIS["https://saref.etsi.org/core/Measurement"]()
+            unamed_measurement.hasValue = row.Magnitud
+            unamed_measurement.hasTimestamp = row.DateTime_
+            unamed_measurement.isMeasuredIn = IRIS["https://saref.etsi.org/core/UnitOfMeasure"]('MbLg',
+                                                                                                namespace=self.onto)
+
+            unamed_measurement_2 = IRIS["https://saref.etsi.org/core/Measurement"]()
+            unamed_measurement_2.hasValue = row.IntensMax
+            unamed_measurement_2.hasTimestamp = row.DateTime_
+            unamed_measurement_2.isMeasuredIn = self.onto.MbLg
+
+            self.onto.SismicSensorPalma.makesMeasurement.append(unamed_measurement)
+            self.onto.SismicSensorPalma.makesMeasurement.append(unamed_measurement_2)
+
+
+    def SO2Level (self, csvName):
+        airQualityCSV = pd.read_csv(csvName, sep=';')
+
+        self.onto.AirQuailitySensorPalma.hasProperty.append(self.onto.SO2Level('SO2', namespace=self.onto))
+
+        for i, row in enumerate(airQualityCSV.itertuples()):
+            print (f' Loading the row number {i}/{len(airQualityCSV)}')
+            unamed_measurement = IRIS["https://saref.etsi.org/core/Measurement"]()
+            unamed_measurement.hasValue = row.SO2
+            unamed_measurement.hasTimestamp = row.Time
+            unamed_measurement.isMeasuredIn = IRIS["https://saref.etsi.org/core/UnitOfMeasure"]('ug/m3', namespace=self.onto)
+            unamed_measurement.relatesToProperty = self.onto.SO2
+
+            self.onto.AirQuailitySensorPalma.makesMeasurement.append(unamed_measurement)
+
+
+    def O3Level (self, csvName):
+        airQualityCSV = pd.read_csv(csvName, sep=';')
+
+        self.onto.AirQuailitySensorPalma.hasProperty.append(self.onto.SO2Level('O3', namespace=self.onto))
+
+        for i, row in enumerate(airQualityCSV.itertuples()):
+            print(f' Loading the row number {i}/{len(airQualityCSV)}')
+            unamed_measurement = IRIS["https://saref.etsi.org/core/Measurement"]()
+            unamed_measurement.hasValue = row.O3
+            unamed_measurement.hasTimestamp = row.Time
+            unamed_measurement.isMeasuredIn = IRIS["https://saref.etsi.org/core/UnitOfMeasure"]('ug/m3',
+                                                                                                namespace=self.onto)
+            unamed_measurement.relatesToProperty = self.onto.SO2
+
+            self.onto.AirQuailitySensorPalma.makesMeasurement.append(unamed_measurement)
+
+
+    def Affections (self, csvName):
+        affectionsCSV = pd.read_csv(csvName)
+
+        self.onto.LaPalmaRisk.hasProperty.append(self.onto.PhysicalProperty('Residential', namespace=self.onto))
+        self.onto.LaPalmaRisk.hasProperty.append(self.onto.PhysicalProperty('Industrial', namespace=self.onto))
+        self.onto.LaPalmaRisk.hasProperty.append(self.onto.PhysicalProperty('Agro', namespace=self.onto))
+        self.onto.LaPalmaRisk.hasProperty.append(self.onto.PhysicalProperty('Leisure', namespace=self.onto))
+        self.onto.LaPalmaRisk.hasProperty.append(self.onto.PhysicalProperty('Other', namespace=self.onto))
+
+        for i, row in enumerate(affectionsCSV.itertuples()):
+            print(f' Loading the row number {i}/{len(affectionsCSV)}')
+            unamed_measurement_1 = IRIS["https://saref.etsi.org/core/Measurement"]()
+            unamed_measurement_1.hasValue = row.Residencial
+            unamed_measurement_1.hasTimestamp = row.Fecha
+            unamed_measurement_1.isMeasuredIn = IRIS["https://saref.etsi.org/core/UnitOfMeasure"]('unit',
+                                                                                                namespace=self.onto)
+
+            unamed_measurement_2 = IRIS["https://saref.etsi.org/core/Measurement"]()
+            unamed_measurement_2.hasValue = row.Industrial
+            unamed_measurement_2.hasTimestamp = row.Fecha
+            unamed_measurement_2.isMeasuredIn = IRIS["https://saref.etsi.org/core/UnitOfMeasure"]('unit',
+                                                                                                  namespace=self.onto)
+
+            unamed_measurement_3 = IRIS["https://saref.etsi.org/core/Measurement"]()
+            unamed_measurement_3.hasValue = row.Agrario
+            unamed_measurement_3.hasTimestamp = row.Fecha
+            unamed_measurement_3.isMeasuredIn = IRIS["https://saref.etsi.org/core/UnitOfMeasure"]('unit',
+                                                                                                  namespace=self.onto)
+
+            unamed_measurement_4 = IRIS["https://saref.etsi.org/core/Measurement"]()
+            unamed_measurement_4.hasValue = row.Ocio
+            unamed_measurement_4.hasTimestamp = row.Fecha
+            unamed_measurement_4.isMeasuredIn = IRIS["https://saref.etsi.org/core/UnitOfMeasure"]('unit',
+                                                                                                  namespace=self.onto)
+
+            unamed_measurement_5 = IRIS["https://saref.etsi.org/core/Measurement"]()
+            unamed_measurement_5.hasValue = row.Otros
+            unamed_measurement_5.hasTimestamp = row.Fecha
+            unamed_measurement_5.isMeasuredIn = IRIS["https://saref.etsi.org/core/UnitOfMeasure"]('unit',
+                                                                                                  namespace=self.onto)
+
+            unamed_measurement_1.relatesToProperty = self.onto.Residential
+            unamed_measurement_2.relatesToProperty = self.onto.Industrial
+            unamed_measurement_3.relatesToProperty = self.onto.Agro
+            unamed_measurement_4.relatesToProperty = self.onto.Leisure
+            unamed_measurement_5.relatesToProperty = self.onto.Other
+
+            self.onto.LaPalmaRisk.makesMeasurement.append(unamed_measurement_1)
+            self.onto.LaPalmaRisk.makesMeasurement.append(unamed_measurement_2)
+            self.onto.LaPalmaRisk.makesMeasurement.append(unamed_measurement_3)
+            self.onto.LaPalmaRisk.makesMeasurement.append(unamed_measurement_4)
+            self.onto.LaPalmaRisk.makesMeasurement.append(unamed_measurement_5)
+
 
 

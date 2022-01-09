@@ -25,10 +25,18 @@ if __name__ == '__main__':
     loader = VulcanologiaLoader(TBox)
     loader.perimetroLoader()
 
-    loader.airQualityLoader('./Data/Registros_de_calidad_aire.csv')
+    #loader.airQualityLoader('./Data/Registros_de_calidad_aire.csv')
+
+    #loader.SismicMovements('./Data/Movimientos_sismicos.csv')
+
+    #loader.SO2Level('./Data/niveles dioxido de azufre.csv')
+
+    loader.O3Level('./Data/ozono.csv')
+
+    #loader.Affections('./Data/Afecciones_a_edificaciones.csv')
 
     TBox = loader.onto
-    TBox.save(file='aservo_output_AirQuality.owl', format='rdfxml')
+    TBox.save(file='aservo_output_AirQualityO3.owl', format='rdfxml')
 
 
 

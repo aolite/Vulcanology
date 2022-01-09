@@ -10,7 +10,7 @@ class OntologyTest(unittest.TestCase):
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             PREFIX saref:<https://saref.etsi.org/core/>
-            SELECT ?feature WHERE {
+            SELECT DISTINCT ?feature WHERE {
                 ?feature a saref:FeatureOfInterest .
             } LIMIT 10
             """)
@@ -21,7 +21,6 @@ class OntologyTest(unittest.TestCase):
 
         self.assertEqual(result["feature"]["value"], 'https://www.w3id.org/aservo#VolcanLaPalma')
 
-
     def test_get_devices (self):
         sparql = SPARQLWrapper(
             "https://api.triplydb.com/datasets/aitorcorchero/Vulcanology/services/Vulcanology/sparql")
@@ -31,7 +30,7 @@ class OntologyTest(unittest.TestCase):
                           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                           PREFIX saref:<https://saref.etsi.org/core/>
                           PREFIX aservo: <https://www.w3id.org/aservo#>
-                          SELECT ?device (STRDT(CONCAT('POINT(', ?lng, ' ', ?lat, ')'), 'http://www.opengis.net/ont/geosparql#wktLiteral') as ?wkt) WHERE {
+                          SELECT DISTINCT ?device (STRDT(CONCAT('POINT(', ?lng, ' ', ?lat, ')'), 'http://www.opengis.net/ont/geosparql#wktLiteral') as ?wkt) WHERE {
                             ?feature a saref:FeatureOfInterest .
                             ?feature aservo:hasDevice ?device .
                             ?device wgs84:location ?location .
@@ -57,7 +56,7 @@ class OntologyTest(unittest.TestCase):
                    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                    PREFIX saref:<https://saref.etsi.org/core/>
                    PREFIX aservo: <https://www.w3id.org/aservo#>
-                   SELECT ?property WHERE {
+                   SELECT DISTINCT ?property WHERE {
                         ?feature a saref:FeatureOfInterest .
                         ?feature aservo:hasDevice <https://www.w3id.org/aservo#AirQuailitySensorPalma> .
                         <https://www.w3id.org/aservo#AirQuailitySensorPalma> saref:hasProperty ?property
@@ -82,9 +81,11 @@ class OntologyTest(unittest.TestCase):
                           PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
                           PREFIX saref:<https://saref.etsi.org/core/>
+                          PREFIX aservo: <https://www.w3id.org/aservo#>
                           SELECT ?time ?value ?unit WHERE {
                             ?feature a saref:FeatureOfInterest .
-                            ?feature saref:hasMeasurement ?measurement .
+                            ?feature aservo:hasDevice ?device .
+  							?device saref:makesMeasurement ?measurement .
                             ?measurement saref:relatesToProperty <https://www.w3id.org/aservo#NO2> .
                             ?measurement saref:hasTimestamp ?time .
                             ?measurement saref:hasValue ?value .

@@ -133,14 +133,14 @@
     
 
 
-    <!-- https://saref.etsi.org/core/makeMeasurement -->
+    <!-- https://saref.etsi.org/core/makesMeasurement -->
 
-    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/makeMeasurement">
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/makesMeasurement">
         <owl:inverseOf rdf:resource="https://saref.etsi.org/core/measurementMadeBy"/>
         <rdfs:domain rdf:resource="https://saref.etsi.org/core/Device"/>
         <rdfs:range rdf:resource="https://saref.etsi.org/core/Measurement"/>
         <rdfs:comment>Device makes measurements</rdfs:comment>
-        <rdfs:label>makeMeasurement</rdfs:label>
+        <rdfs:label>makesMeasurement</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -302,7 +302,7 @@
     <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasArea">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhysicalProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>Area of the lava flow</rdfs:comment>
         <rdfs:label>hasArea</rdfs:label>
@@ -349,7 +349,7 @@
     <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasDepth">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhysicalProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>The depth of a seismic activity</rdfs:comment>
         <rdfs:label>hasDepth</rdfs:label>
@@ -375,7 +375,7 @@
     <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasHectares">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhysicalProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>Hectares</rdfs:comment>
         <rdfs:label>hasHectares</rdfs:label>
@@ -401,7 +401,7 @@
     <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasIntensity">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhysicalProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>The intensity of a seismic activity</rdfs:comment>
         <rdfs:label>hasIntensity</rdfs:label>
@@ -414,7 +414,7 @@
     <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasLongitude">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhysicalProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>The longitude of a seismic activity</rdfs:comment>
         <rdfs:label>hasLongitude</rdfs:label>
@@ -427,7 +427,7 @@
     <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasMagnitude">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhysicalProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>Magnitude of seismic activity</rdfs:comment>
         <rdfs:label>hasMagnitude</rdfs:label>
@@ -478,7 +478,7 @@
     <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasPerimeter">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhysicalProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>Perimeter of a lava flow</rdfs:comment>
         <rdfs:label>hasPerimeter</rdfs:label>
@@ -503,7 +503,7 @@
     <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasShapeArea">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhysicalProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>Shape Area of a lava flow</rdfs:comment>
         <rdfs:label>hasShapeArea</rdfs:label>
@@ -599,7 +599,7 @@
     <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo:aservo#hasLatitude">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhysicalProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>The latitude of a seismic activity</rdfs:comment>
         <rdfs:label>hasLatitude</rdfs:label>
@@ -782,7 +782,7 @@
     <!-- https://www.w3id.org/aservo#LavaFlow -->
 
     <owl:Class rdf:about="https://www.w3id.org/aservo#LavaFlow">
-        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#PhysicalProperty"/>
         <rdfs:comment>Lava flow from a volcanic eruption</rdfs:comment>
         <rdfs:label>LavaFlow</rdfs:label>
     </owl:Class>
@@ -829,12 +829,12 @@
     
 
 
-    <!-- https://www.w3id.org/aservo#PhisycalProperty -->
+    <!-- https://www.w3id.org/aservo#PhysicalProperty -->
 
-    <owl:Class rdf:about="https://www.w3id.org/aservo#PhisycalProperty">
+    <owl:Class rdf:about="https://www.w3id.org/aservo#PhysicalProperty">
         <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/Property"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Physical properties</rdfs:comment>
-        <rdfs:label>PhisycalProperty</rdfs:label>
+        <rdfs:label>PhysicalProperty</rdfs:label>
     </owl:Class>
     
 
@@ -881,7 +881,7 @@
     <!-- https://www.w3id.org/aservo#SeismicActivity -->
 
     <owl:Class rdf:about="https://www.w3id.org/aservo#SeismicActivity">
-        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#PhysicalProperty"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Seismic activity properties</rdfs:comment>
         <rdfs:label>SeismicActivity</rdfs:label>
     </owl:Class>
