@@ -28,7 +28,7 @@ if __name__ == '__main__':
     loader.airQualityLoader('./Data/Registros_de_calidad_aire.csv')
 
     TBox = loader.onto
-    TBox.save(file='aservo_output_full.owl', format='rdfxml')
+    TBox.save(file='aservo_output_AirQuality.owl', format='rdfxml')
 
 
 

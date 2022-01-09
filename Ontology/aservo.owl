@@ -64,14 +64,12 @@
     
 
 
-    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#Location -->
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#location -->
 
-    <owl:ObjectProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#Location">
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#location">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4envi/SpatialObject"/>
-        <rdfs:range rdf:resource="https://saref.etsi.org/saref4envi/SpatialThing"/>
         <rdfs:comment>Location of the spatial thing related with a spatial object</rdfs:comment>
-        <rdfs:label>geo:Location</rdfs:label>
+        <rdfs:label>geo:location</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -199,13 +197,13 @@
     
 
 
-    <!-- https://www.w3id.org/aservo#hasLocation -->
+    <!-- https://www.w3id.org/aservo#hasDevice -->
 
-    <owl:ObjectProperty rdf:about="https://www.w3id.org/aservo#hasLocation">
+    <owl:ObjectProperty rdf:about="https://www.w3id.org/aservo#hasDevice">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <rdfs:domain rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
-        <rdfs:range rdf:resource="https://saref.etsi.org/saref4envi/SpatialObject"/>
-        <rdfs:comment>A feature of interest has a location represented by a spatial object</rdfs:comment>
-        <rdfs:label>hasLocation</rdfs:label>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/Device"/>
+        <rdfs:label>hasDevice</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -238,7 +236,6 @@
     <owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lat">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4envi/SpatialThing"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>Latitude</rdfs:comment>
         <rdfs:label>geo:lat</rdfs:label>
@@ -246,15 +243,14 @@
     
 
 
-    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#lon -->
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#long -->
 
-    <owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lon">
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#long">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4envi/SpatialThing"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:comment>Longitude</rdfs:comment>
-        <rdfs:label>geo:lon</rdfs:label>
+        <rdfs:label>geo:long</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -648,9 +644,24 @@
     
 
 
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#Point -->
+
+    <owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#Point">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing -->
+
+    <owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+    
+
+
     <!-- https://saref.etsi.org/core/Device -->
 
     <owl:Class rdf:about="https://saref.etsi.org/core/Device">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">The device used to measure somenthing</rdfs:comment>
         <rdfs:label>Device</rdfs:label>
     </owl:Class>
@@ -660,7 +671,6 @@
     <!-- https://saref.etsi.org/core/FeatureOfInterest -->
 
     <owl:Class rdf:about="https://saref.etsi.org/core/FeatureOfInterest">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4envi/SpatialThing"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Feature of interest</rdfs:comment>
         <rdfs:label>FeatureOfInterest</rdfs:label>
     </owl:Class>
@@ -688,25 +698,6 @@
     <!-- https://saref.etsi.org/core/UnitOfMeasure -->
 
     <owl:Class rdf:about="https://saref.etsi.org/core/UnitOfMeasure"/>
-    
-
-
-    <!-- https://saref.etsi.org/saref4envi/SpatialObject -->
-
-    <owl:Class rdf:about="https://saref.etsi.org/saref4envi/SpatialObject">
-        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Spatial object</rdfs:comment>
-        <rdfs:label>SpatialObject</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- https://saref.etsi.org/saref4envi/SpatialThing -->
-
-    <owl:Class rdf:about="https://saref.etsi.org/saref4envi/SpatialThing">
-        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4envi/SpatialObject"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Spatial thing</rdfs:comment>
-        <rdfs:label>SpatialThing</rdfs:label>
-    </owl:Class>
     
 
 

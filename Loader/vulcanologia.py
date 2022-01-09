@@ -18,9 +18,23 @@ class VulcanologiaLoader:
         volcan.shape_area = 14796038.3266602
         volcan.length = 62828.82241109
         volcan.hasDurationInDays = 85
-        volcan.lat = 28.612778
-        volcan.lon = -17.866111
+        point_volcan = IRIS["http://www.w3.org/2003/01/geo/wgs84_pos#Point"]()
+        point_volcan.lat = 28.612778
+        point_volcan.long = -17.866111
+        volcan.location = point_volcan
         volcan.hasVolcanicExplosivityIndex = 3
+
+        airqualityDevice= IRIS["https://saref.etsi.org/core/Device"]('AirQuailitySensorPalma', namespace=self.onto)
+        airqualityDevice.location = point_volcan
+        volcan.hasDevice.append(airqualityDevice)
+
+        point_sismic_device = IRIS["http://www.w3.org/2003/01/geo/wgs84_pos#Point"]()
+        point_sismic_device.lat = 28.5116
+        point_sismic_device.long = -17.8759
+        sismicDevice = IRIS["https://saref.etsi.org/core/Device"]('SismicSensorPalma', namespace=self.onto)
+        sismicDevice.location = point_sismic_device
+        volcan.hasDevice.append(sismicDevice)
+
 
     def airQualityLoader (self, csvName):
         #dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -28,11 +42,11 @@ class VulcanologiaLoader:
         airQualityCSV = pd.read_csv(csvName)
         airQualityCSV.fillna({'Time': '', 'SO2': -1}, inplace=True)
 
-        self.onto.VolcanLaPalma.hasProperty.append(self.onto.NO2Level('NO2', namespace= self.onto))
-        self.onto.VolcanLaPalma.hasProperty.append(self.onto.O3Level('O3', namespace=self.onto))
-        self.onto.VolcanLaPalma.hasProperty.append(self.onto.SO2Level('SO2', namespace=self.onto))
-        self.onto.VolcanLaPalma.hasProperty.append(self.onto.HumidityLevel('Humidity', namespace=self.onto))
-        self.onto.VolcanLaPalma.hasProperty.append(self.onto.IlluminanceLevel('Illuminance', namespace=self.onto))
+        self.onto.AirQuailitySensorPalma.hasProperty.append(self.onto.NO2Level('NO2', namespace= self.onto))
+        self.onto.AirQuailitySensorPalma.hasProperty.append(self.onto.O3Level('O3', namespace=self.onto))
+        self.onto.AirQuailitySensorPalma.hasProperty.append(self.onto.SO2Level('SO2', namespace=self.onto))
+        self.onto.AirQuailitySensorPalma.hasProperty.append(self.onto.HumidityLevel('Humidity', namespace=self.onto))
+        self.onto.AirQuailitySensorPalma.hasProperty.append(self.onto.IlluminanceLevel('Illuminance', namespace=self.onto))
 
         for i, row in enumerate(airQualityCSV.itertuples()):
             print (f' Loading the row number {i}/{len(airQualityCSV)}')
@@ -42,4 +56,10 @@ class VulcanologiaLoader:
             unamed_measurement.isMeasuredIn = IRIS["https://saref.etsi.org/core/UnitOfMeasure"]('ug/m3', namespace=self.onto)
             unamed_measurement.relatesToProperty = self.onto.NO2
             self.onto.VolcanLaPalma.hasMeasurement.append(unamed_measurement)
+
+
+    def SismicMovements (self, csvName):
+        seismicMovements = pd.read_csv(csvName)
+        self.onto.VolcanLaPalma.hasProperty.append(self.onto.NO2Level('NO2', namespace=self.onto))
+
 
