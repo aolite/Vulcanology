@@ -37,8 +37,6 @@ class VulcanologiaLoader:
 
 
     def airQualityLoader (self, csvName):
-        #dir_path = os.path.dirname(os.path.realpath(__file__))
-        #dir_path = os.path.join(dir_path, "Data", csvName)
         airQualityCSV = pd.read_csv(csvName)
         airQualityCSV.fillna({'Time': '', 'SO2': -1}, inplace=True)
 
