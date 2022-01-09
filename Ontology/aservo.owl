@@ -1,0 +1,1471 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://www.w3id.org/aservo#"
+     xml:base="https://www.w3id.org/aservo"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:wgs8="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:saref="https://saref.etsi.org/core/"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:aservo="https://www.w3id.org/aservo#"
+     xmlns:s4envi="https://saref.etsi.org/saref4envi/"
+     xmlns:webprotege="http://webprotege.stanford.edu/">
+    <owl:Ontology rdf:about="https://www.w3id.org/aservo">
+        <owl:versionIRI rdf:resource="https://www.w3id.org/aservo"/>
+        <terms:license>http://purl.org/NET/rdflicense/cc-by4.0</terms:license>
+        <rdfs:comment>Ontology about Volcanic Eruption created by Juan Semitiel Saorín</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#sameAs -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#sameAs"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#Date -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2001/XMLSchema#Date">
+        <rdfs:comment xml:lang="en">xsd:Date</rdfs:comment>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#Location -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#Location">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4envi/SpatialObject"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/saref4envi/SpatialThing"/>
+        <rdfs:comment>Location of the spatial thing related with a spatial object</rdfs:comment>
+        <rdfs:label>geo:Location</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/hasMeasurement -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/hasMeasurement">
+        <owl:inverseOf rdf:resource="https://saref.etsi.org/core/isMeasurementOf"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/Measurement"/>
+        <rdfs:comment>Measures of a feature of interest</rdfs:comment>
+        <rdfs:label>hasMeasurement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/hasProperty -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/hasProperty">
+        <owl:inverseOf rdf:resource="https://saref.etsi.org/core/isPropertyOf"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/Property"/>
+        <rdfs:comment>Property of a feature of interest</rdfs:comment>
+        <rdfs:label>hasProperty</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/isMeasuredIn -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/isMeasuredIn">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Measurement"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/UnitOfMeasure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/isMeasurementOf -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/isMeasurementOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Measurement"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+        <rdfs:comment>The measurement related to a feature of interest</rdfs:comment>
+        <rdfs:label>isMeasurementOf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/isPropertyOf -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/isPropertyOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Property"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+        <rdfs:comment>Property related to a feature of interest</rdfs:comment>
+        <rdfs:label>isPropertyOf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/makeMeasurement -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/makeMeasurement">
+        <owl:inverseOf rdf:resource="https://saref.etsi.org/core/measurementMadeBy"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Device"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/Measurement"/>
+        <rdfs:comment>Device makes measurements</rdfs:comment>
+        <rdfs:label>makeMeasurement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/measurementMadeBy -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/measurementMadeBy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Measurement"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/Device"/>
+        <rdfs:comment>Measurement its made by a device</rdfs:comment>
+        <rdfs:label>measurementMadeBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/relatesToMeasurement -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/relatesToMeasurement">
+        <owl:inverseOf rdf:resource="https://saref.etsi.org/core/relatesToProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Property"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/Measurement"/>
+        <rdfs:comment>Property relates to a measurement</rdfs:comment>
+        <rdfs:label>relatesToMeasurement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/relatesToProperty -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/relatesToProperty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Measurement"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/Property"/>
+        <rdfs:comment>Measurement relates to a property</rdfs:comment>
+        <rdfs:label>relatesToProperty</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#causedBy -->
+
+    <owl:ObjectProperty rdf:about="https://www.w3id.org/aservo#causedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="https://www.w3id.org/aservo:aservo#provokes"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PopulationRisks"/>
+        <rdfs:range rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:comment>Populations risks caused by a volcanic eruption</rdfs:comment>
+        <rdfs:label>causedBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasLocation -->
+
+    <owl:ObjectProperty rdf:about="https://www.w3id.org/aservo#hasLocation">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/saref4envi/SpatialObject"/>
+        <rdfs:comment>A feature of interest has a location represented by a spatial object</rdfs:comment>
+        <rdfs:label>hasLocation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo:aservo#provokes -->
+
+    <owl:ObjectProperty rdf:about="https://www.w3id.org/aservo:aservo#provokes">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:range rdf:resource="https://www.w3id.org/aservo#PopulationRisks"/>
+        <rdfs:comment>A volcanic eruption provokes population risks</rdfs:comment>
+        <rdfs:label>provokes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#lat -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lat">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4envi/SpatialThing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Latitude</rdfs:comment>
+        <rdfs:label>geo:lat</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#lon -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lon">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4envi/SpatialThing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Longitude</rdfs:comment>
+        <rdfs:label>geo:lon</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/hasTimestamp -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/core/hasTimestamp">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/hasValue -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/core/hasValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Measurement"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#area -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#area">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#ha -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#ha">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasArea -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasArea">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Area of the lava flow</rdfs:comment>
+        <rdfs:label>hasArea</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasCity -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasCity">
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#AffectedPeople"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>City where affected people  live</rdfs:comment>
+        <rdfs:label>hasCity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasCount -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasCount">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#AffectedBuildings"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Number of affected buildings</rdfs:comment>
+        <rdfs:label>hasCount</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasDate -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasDate">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Property"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:label>hasDate</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasDepth -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasDepth">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The depth of a seismic activity</rdfs:comment>
+        <rdfs:label>hasDepth</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasDurationInDays -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasDurationInDays">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Days of duration of the volcanic eruption</rdfs:comment>
+        <rdfs:label>hasDurationInDays</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasHectares -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasHectares">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Hectares</rdfs:comment>
+        <rdfs:label>hasHectares</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasHourAverage -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasHourAverage">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo:aservo#AirQualityProperties"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Average in a hour</rdfs:comment>
+        <rdfs:label>hasHourAverage</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasIntensity -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasIntensity">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The intensity of a seismic activity</rdfs:comment>
+        <rdfs:label>hasIntensity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasLongitude -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasLongitude">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The longitude of a seismic activity</rdfs:comment>
+        <rdfs:label>hasLongitude</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasMagnitude -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasMagnitude">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Magnitude of seismic activity</rdfs:comment>
+        <rdfs:label>hasMagnitude</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasName -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasName">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Name of the volcanic eruption</rdfs:comment>
+        <rdfs:label>hasName</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasNumberOfMen -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasNumberOfMen">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#AffectedPeople"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Number of men afected by a volcanic eruption</rdfs:comment>
+        <rdfs:label>hasNumberOfMen</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasNumberOfWomen -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasNumberOfWomen">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#AffectedPeople"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>Number of men afected by a volcanic eruption</rdfs:comment>
+        <rdfs:label>hasNumberOfWomen</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasPerimeter -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasPerimeter">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Perimeter of a lava flow</rdfs:comment>
+        <rdfs:label>hasPerimeter</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasSeismDate -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasSeismDate">
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#SeismicActivity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Datetime when the seism occurs</rdfs:comment>
+        <rdfs:label>hasSeismDate</rdfs:label>
+        <rdfs:sameAs>hasDate</rdfs:sameAs>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasShapeArea -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasShapeArea">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Shape Area of a lava flow</rdfs:comment>
+        <rdfs:label>hasShapeArea</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasShapeLength -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasShapeLength">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Measurement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Shape length of a lava flow</rdfs:comment>
+        <rdfs:label>hasShapeLength</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasStartDate -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasStartDate">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">date the volcanic eruption occurred</rdfs:comment>
+        <rdfs:label>hasStartDate</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasTime -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Property"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment>Measure of time</rdfs:comment>
+        <rdfs:label>hasTime</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#hasVolcanicExplosivityIndex -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#hasVolcanicExplosivityIndex">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment>The Volcanic Explosivity Index of the volcan eruption</rdfs:comment>
+        <rdfs:label>hasVolcanicExplosivityIndex</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#length -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#length">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#perimeter -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#perimeter">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo#shape_area -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo#shape_area">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.w3id.org/aservo:aservo#hasLatitude -->
+
+    <owl:DatatypeProperty rdf:about="https://www.w3id.org/aservo:aservo#hasLatitude">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>The latitude of a seismic activity</rdfs:comment>
+        <rdfs:label>hasLatitude</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:6d655d97-618e-4cd2-840b-832a836ae541#hasUse -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:6d655d97-618e-4cd2-840b-832a836ae541#hasUse">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://www.w3id.org/aservo#AffectedBuildings"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Use of an affected building</rdfs:comment>
+        <rdfs:label>hasUse</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- urn:webprotege:ontology:6d655d97-618e-4cd2-840b-832a836ae541#isMagnitudeType -->
+
+    <owl:DatatypeProperty rdf:about="urn:webprotege:ontology:6d655d97-618e-4cd2-840b-832a836ae541#isMagnitudeType">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Measurement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Type of magnitude measure on a seismic activity</rdfs:comment>
+        <rdfs:label>isMagnitudeType</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://saref.etsi.org/core/Device -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/Device">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">The device used to measure somenthing</rdfs:comment>
+        <rdfs:label>Device</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/core/FeatureOfInterest -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/FeatureOfInterest">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4envi/SpatialThing"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Feature of interest</rdfs:comment>
+        <rdfs:label>FeatureOfInterest</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/core/Measurement -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/Measurement">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Measurement of a thing</rdfs:comment>
+        <rdfs:label>Measurement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/core/Property -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/Property">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Property of a thing</rdfs:comment>
+        <rdfs:label>Property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/core/UnitOfMeasure -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/UnitOfMeasure"/>
+    
+
+
+    <!-- https://saref.etsi.org/saref4envi/SpatialObject -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/saref4envi/SpatialObject">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Spatial object</rdfs:comment>
+        <rdfs:label>SpatialObject</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/saref4envi/SpatialThing -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/saref4envi/SpatialThing">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/saref4envi/SpatialObject"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Spatial thing</rdfs:comment>
+        <rdfs:label>SpatialThing</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#AffectedBuildings -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#AffectedBuildings">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#PopulationRisks"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">The affected builidings</rdfs:comment>
+        <rdfs:label>AffectedBuildings</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#AffectedPeople -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#AffectedPeople">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#PopulationRisks"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">The affected people</rdfs:comment>
+        <rdfs:label>AffectedPeople</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#AirQuality -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#AirQuality">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo:aservo#AirQualityProperties"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">The quality of the air in the area observed</rdfs:comment>
+        <rdfs:label>AirQuality</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#AirQualitySensor -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#AirQualitySensor">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/Device"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Device to measure te air quality</rdfs:comment>
+        <rdfs:label>AirQualitySensor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#Hawaiian -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#Hawaiian">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hawaiian type of volcanic eruption</rdfs:comment>
+        <rdfs:label>Hawaiian</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#HawaiianStrombolian -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#HawaiianStrombolian">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hawaiian strombolian  type of volcanic eruption</rdfs:comment>
+        <rdfs:label>HawaiianStrombolian</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#HumidityLevel -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#HumidityLevel">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#AirQuality"/>
+        <rdfs:label>HumidityLevel</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#IlluminanceLevel -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#IlluminanceLevel">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#AirQuality"/>
+        <rdfs:label>IlluminanceLevel</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#LavaFlow -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#LavaFlow">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:comment>Lava flow from a volcanic eruption</rdfs:comment>
+        <rdfs:label>LavaFlow</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#LavaFlowSensor -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#LavaFlowSensor">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/Device"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Device to measure the lava flow parameters</rdfs:comment>
+        <rdfs:label>LavaFlowSensor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#NO2Level -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#NO2Level">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#AirQuality"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Nitrogen dioxide level in the air</rdfs:comment>
+        <rdfs:label>NO2Level</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#O3Level -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#O3Level">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#AirQuality"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Ozone level in the air</rdfs:comment>
+        <rdfs:label>O3Level</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#PeleanPlinian -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#PeleanPlinian">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:comment>Pelean Plinian  type of volcanic eruption</rdfs:comment>
+        <rdfs:label>PeleanPlinian</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#PhisycalProperty -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#PhisycalProperty">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/Property"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Physical properties</rdfs:comment>
+        <rdfs:label>PhisycalProperty</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#Plinian -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#Plinian">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:comment>Plinian type of volcanic eruption</rdfs:comment>
+        <rdfs:label>Plinian</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#PlinianaUltraplinian -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#PlinianaUltraplinian">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:comment>Plinian Ultraplinian  type of volcanic eruption</rdfs:comment>
+        <rdfs:label>PlinianaUltraplinian</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#PopulationRisks -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#PopulationRisks">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">The risks that may affect to the people population or its material assets</rdfs:comment>
+        <rdfs:label>PopulationRisks</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#SO2Level -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#SO2Level">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#AirQuality"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Sulfur dioxide level in the air</rdfs:comment>
+        <rdfs:label>SO2Level</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#SeismicActivity -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#SeismicActivity">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#PhisycalProperty"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Seismic activity properties</rdfs:comment>
+        <rdfs:label>SeismicActivity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#SeismicActivitySensor -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#SeismicActivitySensor">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/Device"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Device to measure the parameters of a seismic</rdfs:comment>
+        <rdfs:label>SeismicActivitySensor</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#StrombolianVulcanian -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#StrombolianVulcanian">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:comment>Strombolian Vulcanian  type of volcanic eruption</rdfs:comment>
+        <rdfs:label>StrombolianVulcanian</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#VolcanicEruption -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#VolcanicEruption">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/FeatureOfInterest"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://saref.etsi.org/core/hasProperty"/>
+                <owl:someValuesFrom rdf:resource="https://saref.etsi.org/core/Property"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A volcanic eruption</rdfs:comment>
+        <rdfs:label>VolcanicEruption</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#Vulcanian -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#Vulcanian">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:comment>Vulcanian  type of volcanic eruption</rdfs:comment>
+        <rdfs:label>Vulcanian</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo#VulcanianExplosivePelean -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo#VulcanianExplosivePelean">
+        <rdfs:subClassOf rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+        <rdfs:comment>Vulcanian Explosive Pelean type of volcanic eruption</rdfs:comment>
+        <rdfs:label>VulcanianExplosivePelean</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- https://www.w3id.org/aservo:aservo#AirQualityProperties -->
+
+    <owl:Class rdf:about="https://www.w3id.org/aservo:aservo#AirQualityProperties">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/Property"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">Air quality properties</rdfs:comment>
+        <rdfs:label>AirQualityProperties</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://www.w3id.org/aservo#Hawaiian"/>
+            <rdf:Description rdf:about="https://www.w3id.org/aservo#HawaiianStrombolian"/>
+            <rdf:Description rdf:about="https://www.w3id.org/aservo#PeleanPlinian"/>
+            <rdf:Description rdf:about="https://www.w3id.org/aservo#Plinian"/>
+            <rdf:Description rdf:about="https://www.w3id.org/aservo#PlinianaUltraplinian"/>
+            <rdf:Description rdf:about="https://www.w3id.org/aservo#StrombolianVulcanian"/>
+            <rdf:Description rdf:about="https://www.w3id.org/aservo#Vulcanian"/>
+            <rdf:Description rdf:about="https://www.w3id.org/aservo#VulcanianExplosivePelean"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="urn:swrl:var#v">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl:var#e">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="https://www.w3id.org/aservo#hasVolcanicExplosivityIndex"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                                <swrl:argument2 rdf:resource="urn:swrl:var#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#equal"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="urn:swrl:var#e"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#Hawaiian"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="https://www.w3id.org/aservo#hasVolcanicExplosivityIndex"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                                <swrl:argument2 rdf:resource="urn:swrl:var#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#equal"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="urn:swrl:var#e"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#HawaiianStrombolian"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="https://www.w3id.org/aservo#hasVolcanicExplosivityIndex"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                                <swrl:argument2 rdf:resource="urn:swrl:var#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#equal"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="urn:swrl:var#e"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#StrombolianVulcanian"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="https://www.w3id.org/aservo#hasVolcanicExplosivityIndex"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                                <swrl:argument2 rdf:resource="urn:swrl:var#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#equal"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="urn:swrl:var#e"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#VulcanianExplosivePelean"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="https://www.w3id.org/aservo#hasVolcanicExplosivityIndex"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                                <swrl:argument2 rdf:resource="urn:swrl:var#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#equal"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="urn:swrl:var#e"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#PeleanPlinian"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="https://www.w3id.org/aservo#hasVolcanicExplosivityIndex"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                                <swrl:argument2 rdf:resource="urn:swrl:var#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#equal"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="urn:swrl:var#e"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#Plinian"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#VolcanicEruption"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="https://www.w3id.org/aservo#hasVolcanicExplosivityIndex"/>
+                                <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                                <swrl:argument2 rdf:resource="urn:swrl:var#e"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="urn:swrl:var#e"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="https://www.w3id.org/aservo#PlinianaUltraplinian"/>
+                        <swrl:argument1 rdf:resource="urn:swrl:var#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
