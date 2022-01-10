@@ -1,6 +1,6 @@
 from owlready2 import *
 import pandas as pd
-import os
+from datetime  import datetime as dt
 
 class VulcanologiaLoader:
     def __init__(self, ontology):

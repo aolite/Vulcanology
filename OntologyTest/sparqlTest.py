@@ -46,7 +46,8 @@ class OntologyTest(unittest.TestCase):
             array.append(result["device"]["value"])
 
         self.assertEqual(array, ['https://www.w3id.org/aservo#AirQuailitySensorPalma',
-                                 'https://www.w3id.org/aservo#SismicSensorPalma'])
+                                 'https://www.w3id.org/aservo#SismicSensorPalma',
+                                 'https://www.w3id.org/aservo#LaPalmaRisk'])
 
     def test_get_involved_variables_in_vulcano(self):
         sparql = SPARQLWrapper(
@@ -83,9 +84,6 @@ class OntologyTest(unittest.TestCase):
                           PREFIX saref:<https://saref.etsi.org/core/>
                           PREFIX aservo: <https://www.w3id.org/aservo#>
                           SELECT ?time ?value ?unit WHERE {
-                            ?feature a saref:FeatureOfInterest .
-                            ?feature aservo:hasDevice ?device .
-  							?device saref:makesMeasurement ?measurement .
                             ?measurement saref:relatesToProperty <https://www.w3id.org/aservo#NO2> .
                             ?measurement saref:hasTimestamp ?time .
                             ?measurement saref:hasValue ?value .
